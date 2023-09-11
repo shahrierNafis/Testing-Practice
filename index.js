@@ -65,3 +65,34 @@ export function caesarCipher(string, shift) {
 
     return result;
 }
+/**
+ * Analyzes an array by calculating its average, minimum, maximum, and length.
+ * 
+ * @param {number[]} array - The array to be analyzed.
+ * @returns {Object} - An object containing the calculated values.
+ */
+export function analyzeArray(array) {
+    // Calculate the sum of all elements in the array
+    const sum = array.reduce((a, b) => a + b, 0);
+
+    // Calculate the average by dividing the sum by the number of elements
+    const average = sum / array.length;
+
+    // Find the minimum value in the array
+    const min = Math.min(...array);
+
+    // Find the maximum value in the array
+    const max = Math.max(...array);
+
+    // Get the length of the array
+    const length = array.length;
+
+    // Return an object containing the calculated values
+    return {
+        average,
+        min,
+        max,
+        length
+    };
+}
+analyzeArray([1, 8, 3, 4, 2, 6])
