@@ -1,5 +1,5 @@
 {
-  "mode": "module",
+  "type": "module",
   "name": "testing-practice",
   "version": "1.0.0",
   "description": "",

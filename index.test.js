@@ -1,20 +1,20 @@
 import {
     capitalize, reverse,
-    calculator
+    calculator, caesarCipher
 } from "./index.js"
 
 describe('capatalizer', () => {
-    test('Capitalize a lowercase string', () => {
+    test('capitalize  a lowercase string', () => {
         const result = capitalize('hello');
         expect(result).toBe('HELLO');
     });
 
-    test('Capitalize an uppercase string', () => {
+    test('capitalize  an uppercase string', () => {
         const result = capitalize('WORLD');
         expect(result).toBe('WORLD');
     });
 
-    test('Capitalize a mixed case string', () => {
+    test('capitalize  a mixed case string', () => {
         const result = capitalize('Hello World');
         expect(result).toBe('HELLO WORLD');
     });
@@ -22,19 +22,19 @@ describe('capatalizer', () => {
 })
 
 describe('reverse', () => {
-    it('returns the reversed string', () => {
+    test('returns the reversed string', () => {
         expect(reverse('hello')).toEqual('olleh');
     });
 
-    it('returns an empty string when given an empty string', () => {
+    test('returns an empty string when given an empty string', () => {
         expect(reverse('')).toEqual('');
     });
 
-    it('returns the same string when given a single character', () => {
+    test('returns the same string when given a single character', () => {
         expect(reverse('a')).toEqual('a');
     });
 
-    it('returns the reversed string when given a string with spaces', () => {
+    test('returns the reversed string when given a string wtesth spaces', () => {
         expect(reverse('hello world')).toEqual('dlrow olleh');
     });
 });
@@ -64,3 +64,34 @@ describe('calculator', () => {
         expect(calculator.divide(0, 5)).toBe(0);
     });
 });
+
+describe('caesarCipher', () => {
+
+    test('shift uppercase letters correctly', () => {
+        expect(caesarCipher('ABC', 1)).toEqual('BCD');
+        expect(caesarCipher('XYZ', 3)).toEqual('ABC');
+    });
+
+    test('shift lowercase letters correctly', () => {
+        expect(caesarCipher('abc', 1)).toEqual('bcd');
+        expect(caesarCipher('xyz', 3)).toEqual('abc');
+    });
+
+    test('wrap from z to a', () => {
+        expect(caesarCipher('z', 1)).toBe('a');
+        expect(caesarCipher('z', 2)).toBe('b');
+        expect(caesarCipher('a', 26)).toBe('a');
+    })
+
+    test('keep the same case', () => {
+        expect(caesarCipher('Aa', 1)).toBe('Bb');
+    })
+
+    test('handle non-alphabetic characters', () => {
+        expect(caesarCipher('Hello, World!', 5)).toEqual('Mjqqt, Btwqi!');
+        expect(caesarCipher('123', 7)).toEqual('123');
+    });
+
+
+
+})
